@@ -16,4 +16,4 @@ class BotCog(commands.Cog, name="bot"):
         await ctx.send("にゃーん")
 
 def setup(bot: commands.Bot):
-    return bot.add_cog(AuthBotCog(bot))
+    return bot.add_cog(BotCog(bot))
