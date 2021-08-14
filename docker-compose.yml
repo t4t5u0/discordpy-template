@@ -1,0 +1,16 @@
+version: "3"
+services:
+  sample_service:
+    container_name: app
+    image: ./Docker/Dockerfile
+    tty: true
+    # secret in /run/secrets/discord_secret.json
+    secrets:
+      - discord_secret
+    volumes:
+      - ./src:/app
+    command: python /app/main.py
+
+secrets:
+  discord_secret:
+    file: .config/discord_secret.json
