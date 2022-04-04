@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: ./Docker/Dockerfile
     tty: true
-    # secret in /run/secrets/discord_secret.json
+    # secret in /run/secrets/discord_secret
     secrets:
       - discord_secret
     volumes:
@@ -15,4 +15,4 @@ services:
 
 secrets:
   discord_secret:
-    file: .config/discord_secret.json
+    file: ./config/discord_secret.json
