@@ -11,7 +11,7 @@ services:
       - discord_secret
     volumes:
       - ./src:/app
-    command: [ "python", "src/main.py" ]
+    command: [ "python", "-u", "src/main.py" ]
 
 secrets:
   discord_secret:
