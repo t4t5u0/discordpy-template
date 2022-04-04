@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-class Hoge(commands.Cog):
+class StartMessage(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -15,4 +15,4 @@ class Hoge(commands.Cog):
         await self.bot.change_presence(activity=discord.Game(name='!help'))
 
 def setup(bot: commands.Bot):
-    return bot.add_cog(Hoge(bot))
+    return bot.add_cog(StartMessage(bot))
