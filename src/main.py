@@ -1,5 +1,6 @@
 import discord
 from discord.ext.commands import Bot
+from help.help_command import JapaneseHelpCommand
 
 from libs.get_token import get_token
 
@@ -9,10 +10,17 @@ def main():
     if not TOKEN:
         print("TOKENが設定されていません。プログラムを終了します。")
         exit(1)
-    bot: Bot = Bot(command_prefix="!")
+
+    # プレフィックスを変更
+    prefix = "!"
+    bot: Bot = Bot(
+        command_prefix=prefix, help_command=JapaneseHelpCommand(prefix=prefix)
+    )
+
     # ここにコグを追加していく
     bot.load_extension("cog.on_ready")
-    bot.load_extension("cog.bot")
+    bot.load_extension("cog.test_command")
+
     try:
         bot.run(TOKEN)
     except discord.errors.LoginFailure:
