@@ -1,9 +1,21 @@
-FROM python:3.9
+FROM python:3.10-slim as builder
 
-RUN mkdir /app
+WORKDIR /usr/src/app
 
-WORKDIR /app
+RUN pip install poetry
 
-ADD ../src /app
+COPY pyproject.toml poetry.lock ./
 
-RUN pip install -U pip && pip install --trusted-host pypi.python.org -r requirements.txt
+RUN poetry export -f requirements.txt > requirements.txt
+
+FROM python:3.10-slim
+
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /usr/src/app
+
+COPY --from=builder /usr/src/app/requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY . .
