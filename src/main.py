@@ -11,6 +11,9 @@ def main():
         print("TOKENが設定されていません。プログラムを終了します。")
         exit(1)
 
+    intents = discord.Intents.default()
+    intents.message_content = True
+
     # プレフィックスを変更
     prefix = "!"
     bot: Bot = Bot(
