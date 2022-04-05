@@ -17,7 +17,9 @@ def main():
     # プレフィックスを変更
     prefix = "!"
     bot: Bot = Bot(
-        command_prefix=prefix, help_command=JapaneseHelpCommand(prefix=prefix)
+        command_prefix=prefix,
+        help_command=JapaneseHelpCommand(prefix=prefix),
+        intents=intents,
     )
 
     # ここにコグを追加していく
