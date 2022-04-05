@@ -14,5 +14,5 @@ class StartMessage(commands.Cog):
         print('-'*20)
         await self.bot.change_presence(activity=discord.Game(name='!help'))
 
-def setup(bot: commands.Bot):
-    return bot.add_cog(StartMessage(bot))
+async def setup(bot: commands.Bot):
+    await bot.add_cog(StartMessage(bot))

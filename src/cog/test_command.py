@@ -21,5 +21,5 @@ class TestCog(commands.Cog, name="テスト"):
         await ctx.send(msg)
 
 
-def setup(bot: commands.Bot):
-    return bot.add_cog(TestCog(bot))
+async def setup(bot: commands.Bot):
+    await bot.add_cog(TestCog(bot))
