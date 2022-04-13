@@ -12,7 +12,8 @@ def main():
         exit(1)
 
     intents = discord.Intents.default()
-    intents.message_content = True
+    intents.messages = True
+    # intents.message_content = True
 
     # プレフィックスを変更
     prefix = "!"
@@ -25,6 +26,7 @@ def main():
     # ここにコグを追加していく
     bot.load_extension("cog.on_ready")
     bot.load_extension("cog.test_command")
+    bot.load_extension("cog.tasks")
 
     try:
         bot.run(TOKEN)
