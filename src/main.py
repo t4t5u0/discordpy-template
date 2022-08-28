@@ -33,7 +33,8 @@ def main():
         exit(1)
 
     intents = discord.Intents.default()
-    intents.message_content = True
+    intents.messages = True
+    # intents.message_content = True
 
     # プレフィックスを変更
     prefix = "!"
