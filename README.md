@@ -12,6 +12,7 @@
 1. Botをサーバーに招待する
 1. `./config/discord_secret.json` にトークンを書き込む
 1. 下記の手順に従って起動
+
 ### with docker
 
 ```sh
@@ -55,9 +56,12 @@ git update-index --assume-unchanged config/discord_secret.json
 `main.py` の以下の部分に追加したいファイル名を書き込みましょう．
 
 ```py
-    # ここにコグを追加していく
-    bot.load_extension("cog.on_ready")
-    bot.load_extension("cog.test_command")
+class MyBot(Bot):
+    ...
+    async def setup_hook(self) -> None:
+        # ここにCogを追加していく
+        await self.load_extension("cog.on_ready")
+        await self.load_extension("cog.test_command")
 ```
 
 わからなければ[@i4mwh4ti4m](https://twitter.com/i4mwh4ti4m)に聞いてください
