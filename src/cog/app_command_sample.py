@@ -4,7 +4,7 @@ from discord.ext import commands
 
 
 @app_commands.guild_only()
-class SlashCommandTestCog(commands.GroupCog):
+class SlashCommandTestCog(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
