@@ -1,9 +1,11 @@
+from dis import disco
 import discord
 from discord import app_commands
 from discord.ext import commands
 
 
-class SlashCommandTestCog(commands.cog):
+@app_commands.guild_only()
+class SlashCommandTestCog(commands.GroupCog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 

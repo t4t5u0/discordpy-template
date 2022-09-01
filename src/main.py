@@ -10,6 +10,8 @@ from discord.ext.commands.help import HelpCommand
 from help.help_command import JapaneseHelpCommand
 from libs.get_token import get_token
 
+# MY_GUILD = discord.Object(id=0) # own server id
+
 
 class MyBot(Bot):
     def __init__(
@@ -21,13 +23,18 @@ class MyBot(Bot):
         super().__init__(
             command_prefix=command_prefix, help_command=help_command, **options
         )
+        # self.tree = app_commands.CommandTree(self)
 
     async def setup_hook(self) -> None:
         # ここにCogを追加していく
         await self.load_extension("cog.on_ready")
         await self.load_extension("cog.test_command")
         await self.load_extension("cog.tasks")
-        # await self.load_extension("cog.app_command_sample")
+
+        # Slash Command
+        # self.tree.copy_global_to(guild=MY_GUILD)
+        # await self.tree.sync(guild=MY_GUILD)
+        await self.load_extension("cog.app_command_sample")
 
 
 def main():
@@ -45,7 +52,7 @@ def main():
     bot: MyBot = MyBot(
         command_prefix=prefix,
         help_command=JapaneseHelpCommand(prefix=prefix),
-        intents=intents
+        intents=intents,
     )
 
     try:
