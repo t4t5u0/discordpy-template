@@ -11,8 +11,7 @@ services:
       - discord_secret
     volumes:
       - ./src:/app
-    command: [ "python", "-u", "src/main.py" ]
-
+    command: ["/.venv/bin/python", "-u", "main.py" ]
 secrets:
   discord_secret:
     file: ./config/discord_secret.json
