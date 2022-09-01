@@ -19,6 +19,12 @@
 docker compose up
 ```
 
+OR 
+
+```sh
+docker compose up -D
+```
+
 ### without docker
 
 ```sh
